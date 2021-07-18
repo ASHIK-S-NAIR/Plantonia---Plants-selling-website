@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
 :root{
     --main-color: #e65a2b;
@@ -12,14 +13,17 @@
     --light-color: #ededee;
     --white: #fff;
     --box-shadow: rgba(0,0,0,0.1);
+    --paduk: 'Padauk', sans-serif;
+    --cursive: 'Parisienne', cursive;
 
 }
 
 *, *::before, *::after{
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Padauk', sans-serif;
+    box-sizing: border-box; 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 }
 
 body{
@@ -79,6 +83,15 @@ button{
     
 }
 
+@keyframes animUnderline {
+    0%{
+        transform: translateY(1em);
+    }
+    100%{
+        transform: translateY(0.5em);
+    }
+}
+
 .header{
     height: 4em;
     position: fixed;
@@ -107,12 +120,17 @@ button{
     transform: translateY(0);
 }
 
+.header .header-logo{
+    color: var(--main-green);
+}
+
 .header .right{
     height: 4em;
 }
 
 .header-nav{
     padding: 0 2em;
+    margin: 0.5em;
 }
 
 .header-nav-li{
@@ -121,24 +139,111 @@ button{
 
 .header-nav-a{
     color: var(--main-green);
+    font-weight: 500;
+    position: relative;
+}
+
+.header-nav-a:hover::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green-light);
+    transform: translate(0, 0.5em);
+    animation: animUnderline 0.3s ease;
 }
 
 .header-callUsNow{
-    padding: 0 2em;
-    color: var(--main-green);
+    padding: 0.5em 2em;
+    background-color: var(--green-light);
+    border-radius: 30px;
+    margin: 0.5em;
+}
+
+.header-callUsNow h3{
+    color: var(--white);
 }
 
 .header-clickables{
     padding-left: 2em;
     color: var(--main-green);
+    margin: 0.5em;
 }
 
 .header-clickables-btn{
     padding: 0 0.8rem;
+    font-weight: 600;
 }
 
 .header-clickables img{
     height: 1rem;
+}
+
+.header-nav-toggler{
+    display: none;
+}
+
+.header-side{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99;
+    text-align: center;
+}
+
+.header-side .header-sideNav{
+    width: 90%;
+    border: 1ps solid red;
+    height: auto;
+    margin-bottom: 2.5em;
+}
+
+.header-side .header-sideNav-li{
+    display: block;
+    margin-bottom: 2.5em;
+}
+
+.header-side .header-sideNav-a{
+    font-size: 2rem;
+    color: var(--main-green);
+    font-weight: 500;
+    position: relative;
+}
+
+.header-sideNav-a:hover::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--green-light);
+    transform: translate(0, 0.5em);
+    animation: animUnderline 0.3s ease;
+}
+
+.header-side .header-clickables{
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.header-side .header-clickables img{
+    height: 1em;
+    width: 1em;
+    margin-right: 0.5em;
 }
 
 .home-section{
@@ -173,6 +278,7 @@ button{
     background-position: center;
     background-size: contain;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     animation: zoomIn 20s ease infinite;
     /* overflow: hidden; */
 }
@@ -206,7 +312,7 @@ button{
     /* font-family: 'Pacifico', cursive; */
     /* font-family: 'Satisfy', cursive; */
     /* font-family: 'Great Vibes', cursive; */
-    font-family: 'Parisienne', cursive;
+    font-family: var(--cursive);
     /* font-family: 'Alex Brush', cursive; */
     font-weight: 500;
     font-size: 8rem;
